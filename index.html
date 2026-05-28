@@ -122,8 +122,10 @@
             gap: 24px;
         }
 
-        /* AAA Premium Kartlar */
+        /* AAA Premium Kartlar - DÜZELTİLDİ: Artık <a> etiketi olduğu için text-decoration eklendi */
         .project-card {
+            display: block; /* Link olduğu için blok yapıyoruz */
+            text-decoration: none; /* Linkin alt çizgisini kaldırıyoruz */
             background-color: var(--bg-card);
             border: 1px solid rgba(255, 255, 255, 0.03);
             border-radius: 16px;
@@ -134,6 +136,7 @@
             cursor: pointer;
         }
 
+        /* DÜZELTME: Kartların üzerine gelince oluşan efektler sabitlendi */
         .section-games .project-card:hover {
             transform: translateY(-4px);
             border-color: rgba(139, 92, 246, 0.3);
@@ -173,14 +176,15 @@
             border: 1px solid rgba(0, 242, 254, 0.2);
         }
 
+        /* DÜZELTME: Başlık ve Paragraf renkleri hover durumundan etkilenmemesi için zorunlu kılındı */
         .project-card h3 {
             font-size: 1.4rem;
             font-weight: 600;
-            color: var(--text-primary);
+            color: var(--text-primary) !important;
         }
 
         .project-card p {
-            color: var(--text-secondary);
+            color: var(--text-secondary) !important;
             font-size: 0.95rem;
             margin-bottom: 20px;
         }
@@ -203,29 +207,29 @@
             width: 6px;
             height: 6px;
             border-radius: 50%;
-            background-color: #10b981; /* Yeşil */
+            background-color: #10b981;
             box-shadow: 0 0 10px #10b981;
         }
 
         .status-dot.dev {
-            background-color: #f59e0b; /* Turuncu */
+            background-color: #f59e0b;
             box-shadow: 0 0 10px #f59e0b;
         }
 
         .action-link {
             font-size: 0.9rem;
             font-weight: 600;
-            text-decoration: none;
             display: flex;
             align-items: center;
             gap: 6px;
             transition: opacity 0.2s;
         }
 
-        .section-games .action-link { color: var(--accent-games); }
-        .section-software .action-link { color: var(--accent-software); }
+        /* DÜZELTME: İncele/Oyna yazılarının renkleri sabitlendi */
+        .section-games .action-link { color: var(--accent-games) !important; }
+        .section-software .action-link { color: var(--accent-software) !important; }
 
-        .action-link:hover {
+        .project-card:hover .action-link {
             opacity: 0.8;
         }
 
