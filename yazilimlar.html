@@ -3,176 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yazılımlar | Fireplex Entertainment</title>
+    <title>Yazılım Detayı | Fireplex Entertainment</title>
     <style>
         :root {
             --bg-main: #08090c;
             --bg-card: #111319;
-            --accent-software: #00f2fe;
-            --accent-software-glow: rgba(0, 242, 254, 0.15);
+            --accent: #00f2fe; /* JS ile dinamik değişecek */
             --text-primary: #ffffff;
             --text-secondary: #94a3b8;
             --font-family: 'Segoe UI', Inter, system-serif;
         }
+        body { background-color: var(--bg-main); color: var(--text-primary); font-family: var(--font-family); margin: 0; line-height: 1.6; }
+        nav { padding: 20px 40px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .back-link { color: var(--text-secondary); text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+        .back-link:hover { color: var(--text-primary); }
+        
+        /* Dinamik İçerik Alanları */
+        .hero { text-align: center; padding: 80px 20px; background: radial-gradient(circle at top, rgba(255,255,255,0.03) 0%, var(--bg-main) 70%); }
+        #app-title { font-size: 3rem; margin-bottom: 15px; color: var(--accent); text-shadow: 0 0 20px var(--accent); }
+        #app-desc { color: var(--text-secondary); max-width: 600px; margin: 0 auto 30px auto; font-size: 1.2rem; }
+        #app-download { display: inline-block; background: var(--accent); color: #000; padding: 15px 40px; font-weight: bold; text-decoration: none; border-radius: 8px; box-shadow: 0 0 20px var(--accent); transition: transform 0.2s; }
+        #app-download:hover { transform: translateY(-2px); }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background-color: var(--bg-main);
-            color: var(--text-primary);
-            font-family: var(--font-family);
-            line-height: 1.6;
-        }
-
-        /* Navigasyon (Geri Dön) */
-        nav {
-            padding: 20px 40px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            background-color: var(--bg-main);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .back-link {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: color 0.2s;
-        }
-
-        .back-link:hover {
-            color: var(--text-primary);
-        }
-
-        /* Başlık Alanı */
-        .page-header {
-            text-align: center;
-            padding: 60px 20px;
-            background: radial-gradient(circle at top, rgba(0, 242, 254, 0.05) 0%, var(--bg-main) 70%);
-        }
-
-        .page-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--accent-software);
-            text-shadow: 0 0 20px var(--accent-software-glow);
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .page-subtitle {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-        }
-
-        /* Yazılım Listesi Konteyneri */
-        .software-list {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px 20px 80px 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-        }
-
-        /* Ürün Kartı Yatay Tasarım */
-        .product-row {
-            background-color: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            border-radius: 16px;
-            display: flex;
-            overflow: hidden;
-            transition: transform 0.3s, border-color 0.3s;
-        }
-
-        .product-row:hover {
-            transform: translateY(-4px);
-            border-color: rgba(0, 242, 254, 0.3);
-            box-shadow: 0 12px 30px rgba(0, 242, 254, 0.08);
-        }
-
-        /* Görsel Alanı */
-        .product-image-placeholder {
-            width: 40%;
-            background: linear-gradient(135deg, #1e222d 0%, #111319 100%);
-            border-right: 1px solid rgba(255, 255, 255, 0.03);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(255, 255, 255, 0.2);
-            font-size: 0.9rem;
-            text-align: center;
-            padding: 20px;
-            min-height: 250px;
-        }
-
-        /* Bilgi Alanı */
-        .product-info {
-            width: 60%;
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .product-info h2 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: var(--text-primary);
-        }
-
-        .product-info p {
-            color: var(--text-secondary);
-            margin-bottom: 25px;
-            font-size: 1rem;
-        }
-
-        .action-buttons {
-            display: flex;
-            gap: 15px;
-            margin-top: auto;
-        }
-
-        .btn-download {
-            background-color: var(--accent-software);
-            color: #000;
-            padding: 10px 24px;
-            font-weight: 700;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: box-shadow 0.2s, background-color 0.2s;
-        }
-
-        .btn-download:hover {
-            box-shadow: 0 0 15px var(--accent-software-glow);
-            background-color: #33f5ff;
-        }
-
-        /* Mobil Uyumluluk */
-        @media (max-width: 768px) {
-            .product-row {
-                flex-direction: column;
-            }
-            .product-image-placeholder {
-                width: 100%;
-                height: 200px;
-                border-right: none;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-            }
-            .product-info {
-                width: 100%;
-                padding: 25px;
-            }
-        }
+        .content { max-width: 900px; margin: 40px auto; padding: 20px; }
+        #app-image { width: 100%; height: 400px; background: var(--bg-card); border-radius: 12px; margin-bottom: 40px; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); border: 1px dashed rgba(255,255,255,0.2); font-size: 1.2rem;}
+        
+        .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .feature-box { background: var(--bg-card); padding: 30px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); }
+        .feature-box h3 { color: var(--text-primary); margin-bottom: 10px; }
+        
+        #error-message { text-align: center; padding: 100px; color: #ef4444; display: none; }
     </style>
 </head>
 <body>
@@ -181,40 +41,90 @@
         <a href="index.html" class="back-link">← Ana Sayfaya Dön</a>
     </nav>
 
-    <header class="page-header">
-        <h1 class="page-title">// YAZILIM KATALOĞU</h1>
-        <p class="page-subtitle">Günlük kullanımınızı kolaylaştıran, modern arayüzlü araçlarımız.</p>
-    </header>
+    <div id="error-message">
+        <h2>Yazılım bulunamadı!</h2>
+        <p>Aradığınız uygulamaya ulaşılamıyor veya link hatalı.</p>
+    </div>
 
-    <main class="software-list">
+    <div id="app-content" style="display: none;">
+        <div class="hero">
+            <h1 id="app-title">Yükleniyor...</h1>
+            <p id="app-desc"></p>
+            <a href="#" id="app-download">Uygulamayı İndir</a>
+        </div>
+
+        <div class="content">
+            <div id="app-image">Ekran Görüntüsü Yükleniyor...</div>
+            <div class="features-grid" id="app-features">
+                </div>
+        </div>
+    </div>
+
+    <script>
+        // --- 1. VERİTABANI (Yeni uygulamalarını sadece buraya ekleyeceksin) ---
+        const yazilimVerileri = {
+            "pax": {
+                baslik: "Pax Masaüstü Asistanı",
+                aciklama: "Bilgisayarınızı sadece sesinizle yönetin. Sizi dinleyen, anlayan ve işlerinizi sizin yerinize halleden akıllı bir yol arkadaşı.",
+                renk: "#00f2fe",
+                indirmeLinki: "https://github.com/Emre2026/...",
+                gorselYazisi: "[Pax Asistan Ekran Görüntüsü]",
+                ozellikler: [
+                    { baslik: "Sesli Kontrol", detay: "Klavyeye dokunmadan asistanınızla konuşun. İsteklerinizi anında yerine getirir." },
+                    { baslik: "Hayalet Modu (Ghostmode)", detay: "Ekranda yer kaplamaz. Sadece ona ihtiyacınız olduğunda belirir, işiniz bitince kaybolur." }
+                ]
+            },
+            "streamforge": {
+                baslik: "StreamForge İndirme Yöneticisi",
+                aciklama: "İnternetteki dosyaları ve medyaları en yüksek hızda, sorunsuzca bilgisayarınıza indirin. Her şey kontrolünüz altında.",
+                renk: "#20c997",
+                indirmeLinki: "https://github.com/Emre2026/...",
+                gorselYazisi: "[İndirme Yöneticisi Ekran Görüntüsü]",
+                ozellikler: [
+                    { baslik: "Yenilenmiş Tasarım", detay: "Eski karmaşık ekranları unutturacak baştan tasarlanmış şık düğmeler ve göz atma seçenekleri." },
+                    { baslik: "Güvenli Onay Sistemi", detay: "İndirme işlemleriniz başlamadan önce özel onay ekranı sayesinde her şeyden emin olun." }
+                ]
+            }
+        };
+
+        // --- 2. SİSTEM MANTIĞI (Buraya hiç dokunmana gerek yok) ---
         
-        <div class="product-row">
-            <div class="product-image-placeholder">
-                [Pax Asistan Ekran Görüntüsü]
-            </div>
-            <div class="product-info">
-                <h2>Pax Masaüstü Asistanı</h2>
-                <p>Klavye kullanmadan, sadece konuşarak bilgisayarınıza komut verebildiğiniz akıllı yardımcınız. Ekranda kalabalık yapmayan hayalet modu sayesinde dikkatinizi dağıtmadan arka planda çalışır.</p>
-                <div class="action-buttons">
-                    <a href="#" target="_blank" class="btn-download">İndir (v1.0)</a>
-                </div>
-            </div>
-        </div>
+        // URL'den "?app=..." kısmındaki kelimeyi alıyoruz (örn: pax)
+        const urlParams = new URLSearchParams(window.location.search);
+        const appID = urlParams.get('app');
 
-        <div class="product-row">
-            <div class="product-image-placeholder">
-                [İndirme Yöneticisi Ekran Görüntüsü]
-            </div>
-            <div class="product-info">
-                <h2>Pax Download Manager</h2>
-                <p>İnternetten dosya indirmeyi çok daha pratik ve düzenli hale getiren kullanışlı bir araç. Şık düğmeleri, modern arayüzü ve onay ekranlarıyla indirme süreçlerinizi kolayca takip edin.</p>
-                <div class="action-buttons">
-                    <a href="#" target="_blank" class="btn-download">İndir (v1.0)</a>
-                </div>
-            </div>
-        </div>
+        const errorDiv = document.getElementById('error-message');
+        const contentDiv = document.getElementById('app-content');
 
-        </main>
+        // Eğer URL'de gönderilen kelime veritabanımızda varsa:
+        if (appID && yazilimVerileri[appID]) {
+            const data = yazilimVerileri[appID];
 
+            // Tema rengini ayarla (Yazılıma özel renk)
+            document.documentElement.style.setProperty('--accent', data.renk);
+            document.title = data.baslik + " | Fireplex";
+
+            // Metinleri ve linkleri yerleştir
+            document.getElementById('app-title').textContent = data.baslik;
+            document.getElementById('app-desc').textContent = data.aciklama;
+            document.getElementById('app-download').href = data.indirmeLinki;
+            document.getElementById('app-image').textContent = data.gorselYazisi;
+
+            // Özellik kutularını oluştur
+            const featuresContainer = document.getElementById('app-features');
+            data.ozellikler.forEach(ozellik => {
+                const box = document.createElement('div');
+                box.className = 'feature-box';
+                box.innerHTML = `<h3>${ozellik.baslik}</h3><p>${ozellik.detay}</p>`;
+                featuresContainer.appendChild(box);
+            });
+
+            // İçeriği göster
+            contentDiv.style.display = "block";
+        } else {
+            // Yanlış link veya veritabanında olmayan bir kelime girildiyse hata göster
+            errorDiv.style.display = "block";
+        }
+    </script>
 </body>
 </html>
