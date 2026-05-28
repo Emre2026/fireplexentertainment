@@ -3,35 +3,345 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fireplex Entertainment</title>
+    <title>Fireplex Entertainment | Official Studio</title>
     <style>
+        :root {
+            --bg-main: #08090c;
+            --bg-card: #111319;
+            --bg-card-hover: #171a23;
+            --accent-games: #8b5cf6;
+            --accent-games-glow: rgba(139, 92, 246, 0.15);
+            --accent-software: #00f2fe;
+            --accent-software-glow: rgba(0, 242, 254, 0.15);
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --font-family: 'Segoe UI', Inter, system-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            background-color: #121212;
-            color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            font-family: var(--font-family);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Hero Header */
+        header {
+            position: relative;
+            text-align: center;
+            padding: 100px 20px 60px 20px;
+            background: radial-gradient(circle at top, #1e1b4b 0%, var(--bg-main) 70%);
+        }
+
+        .studio-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 30px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #ffffff 40%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Ana İçerik Konteyneri */
+        .showcase-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 70vh;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Bölümler: Oyun & Yazılım */
+        .showcase-section {
+            padding: 60px 40px;
+            position: relative;
+            transition: background-color 0.5s ease;
+        }
+
+        .section-games {
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            background: linear-gradient(180deg, rgba(139, 92, 246, 0.01) 0%, transparent 100%);
+        }
+
+        .section-software {
+            background: linear-gradient(180deg, rgba(0, 242, 254, 0.01) 0%, transparent 100%);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-games .section-title {
+            color: var(--accent-games);
+            text-shadow: 0 0 20px var(--accent-games-glow);
+        }
+
+        .section-software .section-title {
+            color: var(--accent-software);
+            text-shadow: 0 0 20px var(--accent-software-glow);
+        }
+
+        /* Kart Izgarası */
+        .cards-grid {
             display: flex;
             flex-direction: column;
+            gap: 24px;
+        }
+
+        /* AAA Premium Kartlar */
+        .project-card {
+            background-color: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+        }
+
+        .section-games .project-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(139, 92, 246, 0.3);
+            box-shadow: 0 12px 30px rgba(139, 92, 246, 0.08);
+        }
+
+        .section-software .project-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(0, 242, 254, 0.3);
+            box-shadow: 0 12px 30px rgba(0, 242, 254, 0.08);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .card-tag {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .section-games .card-tag {
+            color: var(--accent-games);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .section-software .card-tag {
+            color: var(--accent-software);
+            border: 1px solid rgba(0, 242, 254, 0.2);
+        }
+
+        .project-card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .project-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
         }
-        .container {
-            background-color: #1e1e1e;
-            padding: 40px;
-            border-radius: 15px;
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: #10b981; /* Yeşil */
+            box-shadow: 0 0 10px #10b981;
+        }
+
+        .status-dot.dev {
+            background-color: #f59e0b; /* Turuncu */
+            box-shadow: 0 0 10px #f59e0b;
+        }
+
+        .action-link {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: opacity 0.2s;
+        }
+
+        .section-games .action-link { color: var(--accent-games); }
+        .section-software .action-link { color: var(--accent-software); }
+
+        .action-link:hover {
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        footer {
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            padding: 60px 20px;
+            font-size: 13px;
+            color: #475569;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
         }
-        h1 {
-            color: #4a90e2;
+
+        /* Mobil Uyumlu Tasarım */
+        @media (max-width: 968px) {
+            .showcase-container {
+                grid-template-columns: 1fr;
+            }
+            .section-games {
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+            header h1 {
+                font-size: 2.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Fireplex Entertainment</h1>
-        <p>Geliştirdiğimiz uygulamalar ve oyunlar çok yakında burada!</p>
-    </div>
+
+    <header>
+        <div class="studio-badge">Official Portfolio</div>
+        <h1>FIREPLEX ENTERTAINMENT</h1>
+        <p>Geleceğin eğlence ve üretkenlik ekosistemini inşa ediyoruz. Benzersiz dijital deneyimler ve üstün masaüstü çözümleri.</p>
+    </header>
+
+    <main class="showcase-container">
+        
+        <section class="showcase-section section-games">
+            <h2 class="section-title">
+                <span>//</span> DİJİTAL DÜNYALAR
+            </h2>
+            <div class="cards-grid">
+                
+                <div class="project-card">
+                    <div class="card-header">
+                        <h3>Aetheria: Eclipse</h3>
+                        <span class="card-tag">Aksiyon / RPG</span>
+                    </div>
+                    <p>Gelişmiş mekanikler ve büyüleyici görsel evreniyle, oyuncuyu tamamen içine çeken derin bir hikayeye sahip yeni nesil rol yapma oyunu.</p>
+                    <div class="card-footer">
+                        <div class="status-indicator">
+                            <span class="status-dot dev"></span> Geliştirme Aşamasında
+                        </div>
+                        <a href="#" class="action-link">Detayları Gör →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="card-header">
+                        <h3>Project Ghostmode</h3>
+                        <span class="card-tag">Taktik / Gizlilik</span>
+                    </div>
+                    <p>Sesli komut entegrasyonu ve dinamik çevre etkileşimi içeren, oyuncunun stratejik kararlar alarak görünmez bir hayalet gibi ilerlediği gizlilik odaklı aksiyon deneyimi.</p>
+                    <div class="card-footer">
+                        <div class="status-indicator">
+                            <span class="status-dot"></span> Erken Erişim
+                        </div>
+                        <a href="#" class="action-link">Oyna →</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="showcase-section section-software">
+            <h2 class="section-title">
+                <span>//</span> GÜÇLÜ ÇÖZÜMLER
+            </h2>
+            <div class="cards-grid">
+                
+                <div class="project-card">
+                    <div class="card-header">
+                        <h3>Pax Masaüstü Asistanı</h3>
+                        <span class="card-tag">Yapay Zeka / Araçlar</span>
+                    </div>
+                    <p>Ses tanıma teknolojisi ve özel içerik biçimlendirme algoritmalarıyla donatılmış, iş akışınızı baştan sona optimize eden yeni nesil akıllı masaüstü merkezi.</p>
+                    <div class="card-footer">
+                        <div class="status-indicator">
+                            <span class="status-dot"></span> Yayında
+                        </div>
+                        <a href="#" class="action-link">İndir →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="card-header">
+                        <h3>StreamForge İndirme Yöneticisi</h3>
+                        <span class="card-tag">Verimlilik / Ağ</span>
+                    </div>
+                    <p>İnternet üzerindeki yüksek kaliteli akışları maksimum hızla yakalayıp düzenleyen, tamamen özelleştirilmiş modern arayüze sahip dosya yönetim aracı.</p>
+                    <div class="card-footer">
+                        <div class="status-indicator">
+                            <span class="status-dot"></span> Yayında
+                        </div>
+                        <a href="#" class="action-link">İncele →</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Fireplex Entertainment. Tüm Hakları Saklıdır.</p>
+    </footer>
+
 </body>
 </html>
