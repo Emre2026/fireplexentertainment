@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yazılımlar | Fireplex Entertainment</title>
+    <style>
+        :root {
+            --bg-main: #08090c;
+            --bg-card: #111319;
+            --accent-software: #00f2fe;
+            --accent-software-glow: rgba(0, 242, 254, 0.15);
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --font-family: 'Segoe UI', Inter, system-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            font-family: var(--font-family);
+            line-height: 1.6;
+        }
+
+        /* Navigasyon (Geri Dön) */
+        nav {
+            padding: 20px 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            background-color: var(--bg-main);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .back-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--text-primary);
+        }
+
+        /* Başlık Alanı */
+        .page-header {
+            text-align: center;
+            padding: 60px 20px;
+            background: radial-gradient(circle at top, rgba(0, 242, 254, 0.05) 0%, var(--bg-main) 70%);
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-software);
+            text-shadow: 0 0 20px var(--accent-software-glow);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .page-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Yazılım Listesi Konteyneri */
+        .software-list {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px 20px 80px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        /* Ürün Kartı Yatay Tasarım */
+        .product-row {
+            background-color: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            display: flex;
+            overflow: hidden;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .product-row:hover {
+            transform: translateY(-4px);
+            border-color: rgba(0, 242, 254, 0.3);
+            box-shadow: 0 12px 30px rgba(0, 242, 254, 0.08);
+        }
+
+        /* Görsel Alanı */
+        .product-image-placeholder {
+            width: 40%;
+            background: linear-gradient(135deg, #1e222d 0%, #111319 100%);
+            border-right: 1px solid rgba(255, 255, 255, 0.03);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 20px;
+            min-height: 250px;
+        }
+
+        /* Bilgi Alanı */
+        .product-info {
+            width: 60%;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .product-info h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        .product-info p {
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            font-size: 1rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: auto;
+        }
+
+        .btn-download {
+            background-color: var(--accent-software);
+            color: #000;
+            padding: 10px 24px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: box-shadow 0.2s, background-color 0.2s;
+        }
+
+        .btn-download:hover {
+            box-shadow: 0 0 15px var(--accent-software-glow);
+            background-color: #33f5ff;
+        }
+
+        /* Mobil Uyumluluk */
+        @media (max-width: 768px) {
+            .product-row {
+                flex-direction: column;
+            }
+            .product-image-placeholder {
+                width: 100%;
+                height: 200px;
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            }
+            .product-info {
+                width: 100%;
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="back-link">← Ana Sayfaya Dön</a>
+    </nav>
+
+    <header class="page-header">
+        <h1 class="page-title">// YAZILIM KATALOĞU</h1>
+        <p class="page-subtitle">Günlük kullanımınızı kolaylaştıran, modern arayüzlü araçlarımız.</p>
+    </header>
+
+    <main class="software-list">
+        
+        <div class="product-row">
+            <div class="product-image-placeholder">
+                [Pax Asistan Ekran Görüntüsü]
+            </div>
+            <div class="product-info">
+                <h2>Pax Masaüstü Asistanı</h2>
+                <p>Klavye kullanmadan, sadece konuşarak bilgisayarınıza komut verebildiğiniz akıllı yardımcınız. Ekranda kalabalık yapmayan hayalet modu sayesinde dikkatinizi dağıtmadan arka planda çalışır.</p>
+                <div class="action-buttons">
+                    <a href="#" target="_blank" class="btn-download">İndir (v1.0)</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-row">
+            <div class="product-image-placeholder">
+                [İndirme Yöneticisi Ekran Görüntüsü]
+            </div>
+            <div class="product-info">
+                <h2>Pax Download Manager</h2>
+                <p>İnternetten dosya indirmeyi çok daha pratik ve düzenli hale getiren kullanışlı bir araç. Şık düğmeleri, modern arayüzü ve onay ekranlarıyla indirme süreçlerinizi kolayca takip edin.</p>
+                <div class="action-buttons">
+                    <a href="#" target="_blank" class="btn-download">İndir (v1.0)</a>
+                </div>
+            </div>
+        </div>
+
+        </main>
+
+</body>
+</html>
